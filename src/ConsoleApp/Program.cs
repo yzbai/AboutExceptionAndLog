@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AboutExceptions
+namespace ConsoleApp
 {
     class Program
     {
