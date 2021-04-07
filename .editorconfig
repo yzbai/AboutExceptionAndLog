@@ -1,0 +1,9 @@
+﻿[*.cs]
+
+# CA1032: Implement standard exception constructors
+dotnet_diagnostic.CA1032.severity = none
+
+# Validate arguments of public methods 因为开启了Nullable，确保所有调用被调用项目全是NRT
+dotnet_diagnostic.CA1062.severity = none
+dotnet_diagnostic.CS8601.severity = none
+dotnet_diagnostic.CA1014.severity = none

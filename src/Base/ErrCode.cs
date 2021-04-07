@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Tracing;
 using System.Globalization;
 
 namespace Base
@@ -19,14 +20,24 @@ namespace Base
             return new ErrCode(i);
         }
 
-        public static bool operator ==(ErrCode left, ErrCode right)
+        public static bool operator ==(ErrCode? left, ErrCode? right)
         {
+            if (left == null && right == null)
+            {
+                return true;
+            }
+
+            if (left == null || right == null)
+            {
+                return false;
+            }
+
             return left.Equals(right);
         }
 
-        public static bool operator !=(ErrCode left, ErrCode right)
+        public static bool operator !=(ErrCode? left, ErrCode? right)
         {
-            return !left.Equals(right);
+            return !(left == right);
         }
 
         public ErrCode(int id, string? name = null, string? message = null)
@@ -41,22 +52,21 @@ namespace Base
             return Name ?? Id.ToString(CultureInfo.InvariantCulture);
         }
 
-        public bool Equals(ErrCode other)
+        public bool Equals(ErrCode? other)
         {
-            return Id == other.Id;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
+            if(ReferenceEquals(other,null))
             {
                 return false;
             }
 
-            if (obj is ErrCode)
+            return Id == other.Id;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is ErrCode eventCode)
             {
-                ErrCode other = (ErrCode)obj;
-                return Equals(other);
+                return Equals(eventCode);
             }
 
             return false;
