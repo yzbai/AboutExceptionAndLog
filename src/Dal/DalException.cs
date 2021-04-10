@@ -1,16 +1,16 @@
 ﻿using System;
 
-using Base;
+using Common;
 
 namespace Dal
 {
-    public class DalException : ErrCodeException
+    public class DalException : ErrorCodeException
     {
-        public DalException(ErrCode errCode) : base(errCode)
+        public DalException(ErrorCode errCode) : base(errCode)
         {
         }
 
-        public DalException(ErrCode errCode, Exception? innerException) : base(errCode, innerException)
+        public DalException(ErrorCode errCode, Exception? innerException) : base(errCode, innerException)
         {
         }
     }

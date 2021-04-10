@@ -12,7 +12,7 @@ namespace Dal
         {
             //.. shit happened
 
-            throw ExceptionFactory.OnMigrationError(oldVersion, newVersion, sql, "shit happens");
+            throw DalExceptionFactory.OnMigrationError(oldVersion, newVersion, sql, "shit happens");
         }
     }
 }

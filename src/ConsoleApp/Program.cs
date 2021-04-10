@@ -24,7 +24,7 @@ namespace ConsoleApp
             catch (DalException ex)
             {
                 logger.Error(ex, "Migration Error.");
-            }
+            }             
         }
     }
 }

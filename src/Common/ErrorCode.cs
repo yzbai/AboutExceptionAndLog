@@ -2,11 +2,11 @@
 using System.Diagnostics.Tracing;
 using System.Globalization;
 
-namespace Base
+namespace Common
 {
-    public class ErrCode : IEquatable<ErrCode>
+    public class ErrorCode : IEquatable<ErrorCode>
     {
-        public static readonly ErrCode Empty = new ErrCode(0);
+        public static readonly ErrorCode Empty = new ErrorCode(0);
 
         public int Id { get; }
 
@@ -15,12 +15,12 @@ namespace Base
         public string? Message { get; }
 
 
-        public static implicit operator ErrCode(int i)
+        public static implicit operator ErrorCode(int i)
         {
-            return new ErrCode(i);
+            return new ErrorCode(i);
         }
 
-        public static bool operator ==(ErrCode? left, ErrCode? right)
+        public static bool operator ==(ErrorCode? left, ErrorCode? right)
         {
             if (left == null && right == null)
             {
@@ -35,12 +35,12 @@ namespace Base
             return left.Equals(right);
         }
 
-        public static bool operator !=(ErrCode? left, ErrCode? right)
+        public static bool operator !=(ErrorCode? left, ErrorCode? right)
         {
             return !(left == right);
         }
 
-        public ErrCode(int id, string? name = null, string? message = null)
+        public ErrorCode(int id, string? name = null, string? message = null)
         {
             Id = id;
             Name = name;
@@ -52,7 +52,7 @@ namespace Base
             return Name ?? Id.ToString(CultureInfo.InvariantCulture);
         }
 
-        public bool Equals(ErrCode? other)
+        public bool Equals(ErrorCode? other)
         {
             if(ReferenceEquals(other,null))
             {
@@ -64,7 +64,7 @@ namespace Base
 
         public override bool Equals(object? obj)
         {
-            if (obj is ErrCode eventCode)
+            if (obj is ErrorCode eventCode)
             {
                 return Equals(eventCode);
             }
@@ -77,14 +77,9 @@ namespace Base
             return Id;
         }
 
-        public static ErrCode FromInt32(int code)
+        public static ErrorCode FromInt32(int code)
         {
-            return new ErrCode(code);
-        }
-
-        public Microsoft.Extensions.Logging.EventId ToEventId()
-        {
-            return new Microsoft.Extensions.Logging.EventId(Id, Name);
+            return new ErrorCode(code);
         }
     }
 }
