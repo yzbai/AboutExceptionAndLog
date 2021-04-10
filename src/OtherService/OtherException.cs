@@ -5,7 +5,7 @@ using Common;
 
 namespace OtherService
 {
-    public class OtherException : ErrorCodeException
+    internal class OtherException : ErrorCodeException
     {
         public OtherException(ErrorCode errCode) : base(errCode)
         {

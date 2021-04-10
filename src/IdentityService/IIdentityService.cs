@@ -2,6 +2,6 @@
 {
     public interface IIdentityService
     {
-
+        void SetNickName(long userId, string newNickName);
     }
 }
